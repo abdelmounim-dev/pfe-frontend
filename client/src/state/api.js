@@ -5,6 +5,9 @@ export const api = createApi({
   reducerPath: "adminApi",
   tagTypes: [
     "User",
+    "Vehicules",
+    "Chauffeurs",
+      "Carburant",
     "Products",
     "Customers",
     "Transactions",
@@ -16,15 +19,28 @@ export const api = createApi({
   ],
   endpoints: (build) => ({
     getUser: build.query({
-      query: (id) => `general/user/${id}`,
+      query: (id) => `/user/${id}`,
       providesTags: ["User"],
     }),
+    getVehicule: build.query({
+      query: () => "/vehicule",
+      providesTags: ["Vehicules"],
+    }),
+    getChauffeur: build.query({
+      query: () => "/employe/chauffeur",
+      providesTags: ["Chauffeurs"],
+    }),
+    getCarburant: build.query({
+        query: () => "/carburant",
+      providesTags: ['Carburant'],
+    }),
+
     getProducts: build.query({
       query: () => "client/products",
       providesTags: ["Products"],
     }),
     getCustomers: build.query({
-      query: () => "client/customers",
+      query: () => "client/vehicules",
       providesTags: ["Customers"],
     }),
     getTransactions: build.query({
@@ -60,6 +76,9 @@ export const api = createApi({
 
 export const {
   useGetUserQuery,
+  useGetVehiculeQuery,
+    useGetChauffeurQuery,
+    useGetCartesQuery: useGetCarbuantQuery,
   useGetProductsQuery,
   useGetCustomersQuery,
   useGetTransactionsQuery,

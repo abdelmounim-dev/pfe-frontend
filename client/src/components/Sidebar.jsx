@@ -13,6 +13,8 @@ import {
   useTheme,
 } from "@mui/material";
 import {
+  CreditCardOutlined ,
+    DirectionsCarFilledOutlined,
   SettingsOutlined,
   ChevronLeft,
   ChevronRightOutlined,
@@ -31,7 +33,7 @@ import {
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FlexBetween from "./FlexBetween";
-import profileImage from "assets/profile.jpeg";
+import profileImage from "assets/pfp.jpg";
 
 const navItems = [
   {
@@ -47,12 +49,16 @@ const navItems = [
     icon: <ShoppingCartOutlined />,
   },
   {
-    text: "Customers",
-    icon: <Groups2Outlined />,
+    text: "Vehicules",
+    icon: <DirectionsCarFilledOutlined />,
   },
   {
-    text: "Transactions",
+    text: "Chauffeurs",
     icon: <ReceiptLongOutlined />,
+  },
+  {
+    text: "cartes",
+    icon: <CreditCardOutlined />,
   },
   {
     text: "Geography",
@@ -211,13 +217,14 @@ const Sidebar = ({
                   fontSize="0.9rem"
                   sx={{ color: theme.palette.secondary[100] }}
                 >
-                  {user.name}
+                  {user.nom + " " + user.prenom}
+
                 </Typography>
                 <Typography
                   fontSize="0.8rem"
                   sx={{ color: theme.palette.secondary[200] }}
                 >
-                  {user.occupation}
+                  {user.role || user.level}
                 </Typography>
               </Box>
               <SettingsOutlined
